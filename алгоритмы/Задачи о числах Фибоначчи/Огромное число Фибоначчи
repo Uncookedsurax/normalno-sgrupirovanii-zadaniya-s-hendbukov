@@ -1,0 +1,22 @@
+#include<iostream>
+long long fibonacci(int n) {
+	if (n <= 1) {
+		return n;
+	}
+	else
+		return fibonacci(n - 1) + fibonacci(n - 2);
+
+
+}
+
+int main() {
+	int n;
+	int m;
+	std::cin >> n;
+	std::cin >> m;
+	if (0 <= n <= 100000000000000 && 2<=m<=1000) {
+		std::cout << fibonacci(n)%m;
+	}
+	else return 0;
+
+}
