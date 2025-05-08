@@ -1,0 +1,26 @@
+#include <iostream>
+#include<cmath>
+
+
+
+int FastRocks(int n, int m) {
+	if (n % 2 == 0 and m % 2 == 0) {
+	return 0;
+	}
+	else return 1;
+}
+
+
+int main() {
+	int n;
+	int m;
+	std::cin>> n;
+	std::cin >> m;
+	if (0 <= n <= 10 && 0 <= m <= 10) {
+		if (FastRocks(n, m) == 0) {
+			std::cout << "Lose";
+		}
+		else std::cout << "Win";
+	}
+	else return 0;
+}
