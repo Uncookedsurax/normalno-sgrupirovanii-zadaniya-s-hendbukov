@@ -1,0 +1,43 @@
+#include <iostream>
+#include <vector>
+#include <map>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    map<int, int> points_count;
+    for (int i = 0; i < n; ++i) {
+        int l, r;
+        cin >> l >> r;
+        points_count[l]++;
+        points_count[r]++;
+    }
+    int max_coverage = 0;
+    for (auto it = points_count.begin(); next(it) != points_count.end(); ) {
+        int current_point = it->first;
+        int coverage = 0;
+        for (auto p = points_count.begin(); p != points_count.end(); ++p) {
+            int point = p->first;
+            bool is_in_interval = false;
+            for (int i = 0; i < n; ++i) {
+                int left = (*it).first;
+                int right = (*(next(it))).first;
+                if ((left <= point && point <= right) || (right <= point && point <= left)) {
+                    is_in_interval = true;
+                    break;
+                }
+            }
+            if (is_in_interval) {
+                coverage++;
+            }
+        }
+        max_coverage = max(max_coverage, coverage);
+        advance(it, 1); 
+    }
+    cout << max_coverage << endl;
+
+    return 0;
+}
