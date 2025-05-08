@@ -1,0 +1,18 @@
+#include<iostream>
+
+int delenie(int a, int b) {
+	while (b != 0) {
+		int temp = b;
+		b = a % b;
+		a = temp;
+	}
+	return abs(a);
+}
+
+
+int main() {
+	int a, b;
+	std::cin >> a>> b;
+	int result = delenie(a, b);
+	std::cout << result;
+}
