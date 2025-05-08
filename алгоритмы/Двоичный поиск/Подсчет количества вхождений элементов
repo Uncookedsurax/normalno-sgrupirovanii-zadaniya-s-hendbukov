@@ -1,0 +1,34 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int countEqual(vector<int>& K, int target) {
+    return upper_bound(K.begin(), K.end(), target) - lower_bound(K.begin(), K.end(), target);
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector<int> K(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> K[i];
+    }
+
+    int m;
+    cin >> m;
+
+    vector<int> Q(m);
+    for (int i = 0; i < m; ++i) {
+        cin >> Q[i];
+    }
+
+    for (int i = 0; i < m; ++i) {
+        int count = countEqual(K, Q[i]);
+        cout << count << " ";
+    }
+    
+    return 0;
+}
