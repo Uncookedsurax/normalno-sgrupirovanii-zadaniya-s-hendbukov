@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+const int MAXN = 10 + 5;
+
+void printMatrix(int matrix[][MAXN], int rows, int cols) {
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            cout << matrix[i][j] << ' ';
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int n, m;
+
+    cin >> n >> m;
+
+    int a[MAXN][MAXN];
+    int b[MAXN][MAXN];
+    int c[MAXN][MAXN];
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            cin >> a[i][j];
+        }
+    }
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            cin >> b[i][j];
+        }
+    }
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            c[i][j] = a[i][j] + b[i][j];
+        }
+    }
+    printMatrix(c, n, m);
+
+    return 0;
+}
