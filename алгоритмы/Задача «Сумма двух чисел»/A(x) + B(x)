@@ -1,0 +1,50 @@
+#include<iostream>
+#include<vector>
+
+void sum(int n, std::vector<int>& a, int m, std::vector<int>& b) {
+	int max_r = std::max(n, m);
+	std::vector<int> result(max_r + 1, 0);
+	for (int i = 0; i <= std::min(m, n); ++i) {
+		result[i] += a[i] + b[i];
+	}
+	if (n > m) {
+		for (int i = m + 1; i <= n; ++i) {
+			result[i] += a[i];
+		}
+	}
+	else if (m > n) {
+		for (int i = n + 1; i <= m; ++i) {
+			result[i] += b[i];
+		}
+	}
+
+	while (!result[max_r]) {
+		max_r--;
+	}
+	std::cout << max_r << std::endl;
+
+	for (int i = max_r; i >= 0; --i) {
+		std::cout << result[i];
+	}
+}
+
+
+int main() {
+	int n;
+	std::cin >> n;
+	std::vector<int> a(n + 1);
+	if (0 <= n <= 10) {
+		for (int i = 0; i <= n; ++i) {
+			std::cin >> a[i];
+		}
+		int m;
+		std::cin >> m;
+		std::vector<int> b(m + 1);
+		for (int i = 0; i <= m; ++i) {
+			std::cin >> b[i];
+		}
+		sum(n, a, m, b);
+	}
+	else
+		return 0;
+}
