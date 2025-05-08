@@ -1,0 +1,19 @@
+#include <iterator>
+
+template <typename Iter>
+Iter Unique(Iter first, Iter last) {
+    if (first == last) return first; 
+
+    Iter result = first;  
+    ++first; 
+
+    while (first != last) {
+        if (!(*result == *first)) { 
+            ++result;                
+            *result = *first;        
+        }
+        ++first;                    
+    }
+
+    return std::next(result); 
+}
