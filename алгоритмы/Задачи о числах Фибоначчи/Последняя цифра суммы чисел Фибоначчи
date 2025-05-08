@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+int last_digit_sum(long long n) {
+    const int period_length = 60;
+    vector<int> fib_last_digits(period_length + 1, 0);
+    fib_last_digits[0] = 0;
+    fib_last_digits[1] = 1;
+    for (int i = 2; i <= period_length; ++i) {
+        fib_last_digits[i] = (fib_last_digits[i - 1] + fib_last_digits[i - 2]) % 10;
+    }
+    int remainder = static_cast<int>(n % period_length);
+    int total_sum_modulo = 0;
+    for (int i = 0; i <= remainder; ++i) {
+        total_sum_modulo = (total_sum_modulo + fib_last_digits[i]) % 10;
+    }
+
+    return total_sum_modulo;
+}
+
+int main() {
+    long long n;
+    cin >> n;
+    cout << last_digit_sum(n) << endl;
+
+    return 0;
+}
