@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+
+int last_digit_fibonacci_range(long long m, long long n) {
+    const int period_length = 60;
+    vector<int> fib_last_digits(period_length + 1, 0);
+    fib_last_digits[0] = 0;
+    fib_last_digits[1] = 1;
+    for (int i = 2; i <= period_length; ++i) {
+        fib_last_digits[i] = (fib_last_digits[i - 1] + fib_last_digits[i - 2]) % 10;
+    }
+    int start_idx = m % period_length;
+    int end_idx = n % period_length;
+    int total_sum_modulo = 0;
+    if (start_idx <= end_idx) {
+        for (int i = start_idx; i <= end_idx; ++i) {
+            total_sum_modulo = (total_sum_modulo + fib_last_digits[i]) % 10;
+        }
+    }
+    else {
+        for (int i = start_idx; i <= period_length; ++i) {
+            total_sum_modulo = (total_sum_modulo + fib_last_digits[i]) % 10;
+        }
+        for (int i = 0; i <= end_idx; ++i) {
+            total_sum_modulo = (total_sum_modulo + fib_last_digits[i]) % 10;
+        }
+    }
+
+    return total_sum_modulo;
+}
+
+int main() {
+    long long m, n;
+    cin >> m >> n;
+    cout << last_digit_fibonacci_range(m, n) << endl;
+
+    return 0;
+}
