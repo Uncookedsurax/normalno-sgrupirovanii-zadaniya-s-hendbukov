@@ -1,0 +1,43 @@
+#include<iostream>
+#include<deque>
+
+template <typename T, typename Container = std::deque<T>>
+class Queue
+{
+private:
+	Container conte;
+public:
+
+	const T& front() const {
+	return conte.front();
+		}
+	T& front() {
+	return conte.front();
+}
+
+    void push(const T& mew) {
+		conte.push_back(mew);
+	}
+
+	void pop() {
+		conte.pop_front();
+	}
+
+	size_t size() {
+		return conte.size();
+	}
+
+	bool empty() const {
+		return conte.empty();
+	}
+
+	bool operator == (const Queue& other) const {
+		return conte == other.conte;
+	}
+
+	bool operator != (const Queue& other) const {
+		return !operator==(other);
+	}
+};
+
+
