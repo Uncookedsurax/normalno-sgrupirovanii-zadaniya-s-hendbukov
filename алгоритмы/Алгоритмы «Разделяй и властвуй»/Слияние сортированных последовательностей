@@ -1,0 +1,35 @@
+#include <iostream>
+#include<vector>
+#include<algorithm>
+
+
+
+int main() {
+
+	int n;
+	std::cin>> n;
+
+	if (1 <= n <= 20) {
+
+		std::vector<int> ai;
+
+		for (int i = 0; i < n; ++i) {
+			int mi;
+			std::cin >> mi;
+
+			std::vector<int> bi(mi);
+
+			for (int j = 0; j < mi; ++j) {
+				std::cin >> bi[j];
+			}
+			ai.insert(ai.end(), bi.begin(), bi.end());
+		}
+		std::sort(ai.begin(), ai.end());
+
+		for (size_t k = 0; ai.size() > k; ++k) {
+			std::cout << ai[k] << " ";
+		}
+		return 0;
+	}
+	else return 0;
+}
