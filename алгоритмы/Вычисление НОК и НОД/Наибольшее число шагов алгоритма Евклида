@@ -1,0 +1,28 @@
+#include <iostream>
+#include <utility>
+
+std::pair<long long, long long> fibonacciPair(long long n) {
+    long long f1 = 0, f2 = 1;
+    while (f2 <= n) {
+        std::swap(f1, f2);
+        f2 += f1;
+    }
+    return { f1, f2 }; 
+}
+
+int main() {
+    long long n;
+    std::cin >> n;
+
+    auto pair = fibonacciPair(n);
+
+  
+    if (pair.first > n) {
+        std::cout << "-1 -1\n";
+    }
+    else {
+        std::cout << pair.first << " " << std::min(pair.second, n) << "\n";
+    }
+
+    return 0;
+}
