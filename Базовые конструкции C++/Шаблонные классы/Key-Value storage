@@ -1,0 +1,10 @@
+template <typename Key, typename Value>
+bool KeyValueStorage<Key, Value>::Find(const Key& key, Value* const value) const {
+    auto it = data.find(key);
+    if (value != NULL && it != data.end()) {
+        return *value = it->second;
+    }
+    else 
+    return it != data.end();
+
+}
