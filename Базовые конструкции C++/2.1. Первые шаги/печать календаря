@@ -1,0 +1,29 @@
+#include <iostream>
+
+int main() {
+    int a, b;
+    std::cin >> a >> b;
+
+    int w = a;
+
+for (int i = 1; i < a; ++i) {
+std::cout << "   ";
+        
+    }
+
+for (int d = 1; d <= b; ++d) {
+if (d < 10) {
+std::cout << " ";
+}
+
+std::cout << d;
+
+if (w == 7) {
+std::cout << "\n";
+w = 1;} 
+else {std::cout << " ";
+w+= 1;}
+}
+if (w != 1) std::cout << "\n";
+    
+}
