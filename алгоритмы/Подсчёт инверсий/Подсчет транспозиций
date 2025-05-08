@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int min_transpositions(const vector<int>& permutation) {
+    vector<int> sorted_permutation(permutation);
+    int transpositions = 0;
+
+    bool is_sorted = false;
+    while (!is_sorted) {
+        is_sorted = true;
+        for (int i = 1; i < sorted_permutation.size(); ++i) {
+            if (sorted_permutation[i - 1] > sorted_permutation[i]) {
+                swap(sorted_permutation[i - 1], sorted_permutation[i]); 
+                transpositions++;     
+                is_sorted = false;   
+            }
+        }
+    }
+
+    return transpositions;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    vector<int> permutation(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> permutation[i];
+    }
+
+    cout << min_transpositions(permutation) << endl;
+
+    return 0;
+}
