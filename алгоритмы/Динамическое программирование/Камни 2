@@ -1,0 +1,26 @@
+#include <iostream>
+
+
+
+
+int Rocks(int n, int m) {
+	if (n % 2 == 0 && m % 2 == 0 || n==m) {
+	return 1;
+	}
+	else return 01;
+}
+
+
+int main() {
+	int n;
+	int m;
+	std::cin>> n;
+	std::cin >> m;
+	if (0 <= n <= 1000 && 0 <= m <= 1000) {
+		if (Rocks(n, m) == 0) {
+			std::cout << "Lose";
+		}
+		else std::cout << "Win";
+	}
+	else return 0;
+}
