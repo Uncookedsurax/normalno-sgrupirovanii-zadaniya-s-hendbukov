@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+bool canCoverWithLength(vector<int>& positions, int length, int k) {
+    int count = 1;
+    int start = positions[0];
+
+    for (int i = 1; i < positions.size(); ++i) {
+        if (positions[i] > start + length) {
+            count++;
+            start = positions[i];
+        }
+    }
+    return count <= k;
+}
+
+int main() {
+    int n, k;
+    cin >> n >> k;
+
+    vector<int> positions(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> positions[i];
+    }
+
+    sort(positions.begin(), positions.end());
+    int left = 0, right = positions[n - 1] - positions[0];
+    int result = right;
+
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (canCoverWithLength(positions, mid, k)) {
+            result = mid;
+            right = mid - 1;
+        }
+        else {
+            left = mid + 1;
+        }
+    }
+
+    cout << result << endl;
+
+    return 0;
+}
